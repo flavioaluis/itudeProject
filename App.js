@@ -1,17 +1,27 @@
 import { StatusBar } from 'expo-status-bar';
-import {SafeAreaView} from 'react-native';
-import TelaA from './src/views/TelaA'
-import TelaB from './src/views/TelaB'
-import TelaC from './src/views/TelaC'
+import {NavigationContainer} from '@react-navigation/native'
+import {createStackNavigator} from '@react-navigation/stack'
+
+import UserForm from './src/views/UserForm'
+import UserList from './src/views/UserList'
+
+const Stack = createStackNavigator()
 
 export default function App() {
   return (
-    <SafeAreaView style={{flex:1}}>
-      <TelaA/>
-      <TelaB/>
-      <TelaC/>
+    <NavigationContainer>
+        <Stack.Navigator>
+              <Stack.Screen
+                name="UserList"
+                component={UserList}
+              />
+              <Stack.Screen
+                name="UserForm"
+                component={UserForm}
+              />
+        </Stack.Navigator>
       <StatusBar style="auto"backgroundColor="#fff" />
-    </SafeAreaView>
+    </NavigationContainer>
   );
 }
 
