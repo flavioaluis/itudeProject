@@ -14,7 +14,7 @@ export default [
         name: 'Marcos Krauss Franco',
         email: 'marcos@itude.com.br',
         telefone: '(35)99999-9977',
-        avatarURL: 'https://pixabay.com/pt/vectors/homem-de-negocios-macho-o-neg%c3%b3cio-310819/'
+        avatarURL: 'https://cdn.pixabay.com/photo/2014/04/03/10/32/businessman-310819_1280.png'
 
     },
 

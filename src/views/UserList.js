@@ -1,23 +1,53 @@
 import React from 'react'
 import {View,Text,FlatList} from 'react-native'
 import users from '../data/users'
-import { ListItem } from 'react-native-elements'
+import { Avatar, ListItem, Button, Icon } from 'react-native-elements'
 
 
 export default props => {
 
+  function confirmUserDeletion(user){
+        Alert.alert('Excluir Usuário', 'Deseja excluir o usuário?', [
+              {
+                  text: 'Sim'
+              },
+              {
+                  text: 'Não'
+              }
+        ])
+  }
+
   function getUserItem({ item: user }) {
       return (
         <ListItem
-              leftAvatar ={{source: {uri:user.avatarURL}}}
-              key={user.id}
-              title={user.name}
-              subtitle={user.email}
-              bottomDivider
-              onPress= {() => props.navigation.navigate('UserForm')}
-        />
-        
-      )
+                  bottomDivider
+                  onPress= {() => props.navigation.navigate('UserForm')}>
+                    <Avatar title={user.name} source={{uri: user.avatarURL}}/>
+            <ListItem.Content>
+                  <ListItem.Title>{user.name}</ListItem.Title>
+                  <ListItem.Subtitle>{user.telefone}</ListItem.Subtitle>
+
+            </ListItem.Content> 
+            <ListItem.Chevron />
+            
+
+            <Icon
+              raised
+              name='pencil'
+              type='font-awesome'
+              color='orange'
+              onPress={() => props.navigation.navigate('UserForm', user)}/>
+            
+            <Icon
+              raised
+              name='trash'
+              type='font-awesome'
+              color='red'
+              onPress={() => props.navigation.navigate('UserForm', user)}/>
+              
+        </ListItem>  
+      );
+      
   }
   
     return (
